@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 #macOS stuff 
 /.DS_Store
+Prototype/Assets/.DS_Store
+Prototype/Assets/Scripts/.DS_Store
+Prototype/Assets/Scripts/Arduino Scripts/.DS_Store
