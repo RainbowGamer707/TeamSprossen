@@ -64,3 +64,6 @@ Prototype/Assets/.DS_Store
 Prototype/Assets/Scripts/.DS_Store
 Prototype/Assets/Scripts/Arduino Scripts/.DS_Store
 Prototype/UserSettings/Layouts/default-2021.dwlt
+Prototype/UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+*.dwlt
+Prototype/UserSettings/EditorUserSettings.asset
