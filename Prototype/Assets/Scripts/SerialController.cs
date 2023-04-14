@@ -13,19 +13,14 @@ public class SerialController : MonoBehaviour
     public string portNameT;
     public string[] ports;
 
-    // INITIALISE OTHER VARIABLES
-    public GameObject sprossen;
-    public GameObject leftWall;
-    public GameObject rightWall;
-    public GameObject backWall;
-    public GameObject floor;
-    public GameObject tree;
+    // Init variable to track health of persistant interaction (Tree). Used heavily in TreeController
+    public static int SoulHealth;
     
-    // Init variable to track health of persistant interaction (Tree). 
-    private int _soulHealth;
-    
-    // Init variable to track status of Sprossen (Angry/Happy etc). 
-    private float _sprossenStatus;
+    // Init variable to track status of Sprossen (Angry/Happy etc). Used heavily in SprossenController
+    public static float SprossenStatus;
+
+    // Init variable to control the status of the environment. Used heavily in RoomController.
+    public static float RoomStatus;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +32,7 @@ public class SerialController : MonoBehaviour
         // COPY AND PASTE TO SET FOR YOUR OWN COMPUTER, COMMENT OUT OTHERS
         // portName_S = "/dev/cu.usbmodem1413401";
         // portName_T = "/dev/cu.usbmodem1413301";
-        portNameS = "COM7";
+        portNameS = "COM5";
         portNameT = "COM6";
 
         // SETUP PORTS
@@ -59,14 +54,14 @@ public class SerialController : MonoBehaviour
         _portS.Open();
         _portT.Open();
 
-        // ASSIGN GAME OBJECTS
-        sprossen = GameObject.Find("Sprossen 01");
-        
-        // Set initial health of persistant interaction (Tree). 
-        _soulHealth = 50;
+        //todo - Set initial health of persistant interaction (Tree). NEEDS LOGIC
+        SoulHealth = 50;
         
         // Set initial value for status of Sprossen. 
-        _sprossenStatus = 11.0F;
+        SprossenStatus = 0.0F;
+        
+        // Set initial value for room.
+        RoomStatus = 0.0F;
     }
 
     // Update is called once per frame
@@ -82,41 +77,33 @@ public class SerialController : MonoBehaviour
         var inputStr = _portS.ReadLine().Trim();
         var inputInt = int.Parse(inputStr);
 
+        //------------------------------------------- SPROSSEN LOGIC ---------------------------------------------------
+        
         // Decay the _sprossenStatus back toward 0 (Neutral)
-        switch (_sprossenStatus)
+        switch (SprossenStatus)
         {
             case > 0:
-                _sprossenStatus -= 0.5F;
+                SprossenStatus -= 0.5F;
                 break;
             case < 0:
-                _sprossenStatus += 0.5F;
+                SprossenStatus += 0.5F;
                 break;
         }
 
-        // Update _sprossenStatus with current interaction value. THIS WILL REQ TUNING.
-        _sprossenStatus += inputInt;
+        // Update SprossenStatus with current interaction value. THIS WILL REQ TUNING.
+        SprossenStatus += inputInt;
         
-        // CHANGE COLOUR OF SPRITE BASED ON SPROSSEN MOVEMENT, 0 = PURPLE/NEUTRAL, 1 = GREEN/POSITIVE, 2 = RED/NEGATIVE
-        switch (_sprossenStatus)
-        {
-            // CHANGE COLOUR OF SPRITE, DIVIDE RGB VALUES BY 255 AS UNITY ONLY ACCEPTS VALUES BETWEEN 0 AND 1
-            case < 10 and > -10:
-                sprossen.GetComponent<SpriteRenderer>().color = new Color(255 / 255f, 0 / 255f, 255 / 255f); 
-                _portS.Write("0");
-                break;
-            case > 9:
-                _soulHealth += 1;
-                sprossen.GetComponent<SpriteRenderer>().color = new Color(0 / 255f, 255 / 255f, 0 / 255f);
-                _portS.Write("1");
-                break;
-            case < -9:
-                _soulHealth -= 1;
-                sprossen.GetComponent<SpriteRenderer>().color = new Color(255 / 255f, 0 / 255f, 0 / 255f);
-                _portS.Write("2");
-                break;
-        }
+        //---------------------------------------------- TREE LOGIC ----------------------------------------------------
+        
+        // Update SoulHealth based on input from Arduino. THIS WILL REQ TUNING
+        SoulHealth += inputInt;
         
         // Report Persistant Interaction (Tree) Status to 2nd Arduino
-        _portT.Write(_soulHealth.ToString());
+        _portT.Write(SoulHealth.ToString());
+        
+        //---------------------------------------------- ROOM LOGIC ----------------------------------------------------
+        
+        // Basic Instantaneous Interaction Logic (Changes wall colour depending on interactions (Gentle/Rough)
+        RoomStatus = inputInt;
     }
 }

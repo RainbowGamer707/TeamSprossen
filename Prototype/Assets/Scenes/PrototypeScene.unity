@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 321509340}
   - component: {fileID: 321509339}
   - component: {fileID: 321509338}
+  - component: {fileID: 321509342}
   m_Layer: 0
   m_Name: Sprossen 01
   m_TagString: Untagged
@@ -315,6 +316,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &321509342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321509337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0591d682d32584e84d06560e0cab03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &858902928
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +777,7 @@ GameObject:
   - component: {fileID: 1777292555}
   - component: {fileID: 1777292554}
   - component: {fileID: 1777292553}
+  - component: {fileID: 1777292557}
   m_Layer: 0
   m_Name: floorPlane
   m_TagString: Untagged
@@ -850,6 +864,18 @@ Transform:
   m_Father: {fileID: 858902929}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1777292557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777292552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c470c51397c21274c8cedcacee99be24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1832444693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1022,3 +1048,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e93f4be4e886a84fa00ee3c414da1e9, type: 3}
   m_PrefabInstance: {fileID: 1832444693}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2017577898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048206907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0422e898cfbc6e847bb47ea2d1fca528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
