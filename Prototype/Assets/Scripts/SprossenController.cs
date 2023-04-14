@@ -29,7 +29,7 @@ public class SprossenController : MonoBehaviour
         var material = _sprossenRenderer.material;
         material.color = _sprossenStatus switch
         {
-            // CHANGE COLOUR OF SPRITE
+            // Todo- (Make sure this matches code sent to Arduino) CHANGE COLOUR OF SPRITE
             < 10 and > -10 => Color.blue,
             > 9 => Color.green,
             < -9 => Color.red,

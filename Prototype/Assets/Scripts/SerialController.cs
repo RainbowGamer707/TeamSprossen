@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using System.IO.Ports;
 
@@ -93,14 +94,59 @@ public class SerialController : MonoBehaviour
         // Update SprossenStatus with current interaction value. THIS WILL REQ TUNING.
         SprossenStatus += inputInt;
         
+        // Write current SoulStatus level to serial for the Sprossen Arduino to set LED's.
+        // Sends a number (String) between 0 and 6 depending on current SoulHealth (0 = Best, 2 = Worst)
+        switch (SprossenStatus)
+        {
+            case <= 0 :
+                _portS.Write("2");
+                break;
+            case > 0 and <= 10:
+                _portS.Write("1");
+                break;
+            case > 10:
+                _portS.Write("0");
+                break;
+        }
+
+        // Report Sprossen Interaction Status to 1st Arduino
+        _portS.Write(SprossenStatus.ToString(CultureInfo.InvariantCulture));
+        
         //---------------------------------------------- TREE LOGIC ----------------------------------------------------
         
         // Update SoulHealth based on input from Arduino. THIS WILL REQ TUNING
         SoulHealth += inputInt;
         
-        // Report Persistant Interaction (Tree) Status to 2nd Arduino
-        _portT.Write(SoulHealth.ToString());
-        
+        // Write current SoulHealth level to serial for the 'Tree' Arduino to set LED's.
+        // Sends a number (String) between 0 and 6 depending on current SoulHealth (0 = Worst, 6 = Best)
+        switch (SoulHealth)
+        {
+            case > 0 and < 10:
+                _portT.Write("0");
+                break;
+            case > 9 and < 25:
+                _portT.Write("1");
+                break;
+            case > 24 and < 40:
+                _portT.Write("2");
+                break;
+            case > 39 and < 55:
+                _portT.Write("3");
+                break;
+            case > 54 and < 70:
+                _portT.Write("4");
+                break;
+            case > 69 and < 85:
+                _portT.Write("5");
+                break;
+            case > 84 and < 100:
+                _portT.Write("6");
+                break;
+            case > 99:
+                _portT.Write("7");
+                break;
+        }
+
         //---------------------------------------------- ROOM LOGIC ----------------------------------------------------
         
         // Basic Instantaneous Interaction Logic (Changes wall colour depending on interactions (Gentle/Rough)

@@ -309,7 +309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321509337}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: -10}
+  m_LocalPosition: {x: 0, y: 6.5, z: -10}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,12 +661,6 @@ MonoBehaviour:
   portNameS: 
   portNameT: 
   ports: []
-  sprossen: {fileID: 321509337}
-  leftWall: {fileID: 1539685154}
-  rightWall: {fileID: 1764131712}
-  backWall: {fileID: 1900584918}
-  floor: {fileID: 1777292552}
-  tree: {fileID: 1048206907}
 --- !u!1 &1764131712
 GameObject:
   m_ObjectHideFlags: 0
