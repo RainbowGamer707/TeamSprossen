@@ -69,7 +69,12 @@ public class SerialController : MonoBehaviour
     void Update()
     {
         // CHECK SERIAL PORT IS OPEN
-        if (!_portS.IsOpen || !_portT.IsOpen) return;
+        if (!_portS.IsOpen || !_portT.IsOpen)
+        {
+            Debug.Log("Port is not open");
+            return;
+        }
+           
         
         // CHECK IF UNITY HAS RECEIVED ANY COMMUNICATION FROM ARDUINO
         if (_portS.BytesToRead <= 0) return; 
@@ -77,6 +82,7 @@ public class SerialController : MonoBehaviour
         // Collect and parse data from serial connection.
         var inputStr = _portS.ReadLine().Trim();
         var inputInt = int.Parse(inputStr);
+        Debug.Log("SC - inputInt = " + inputInt);
 
         //------------------------------------------- SPROSSEN LOGIC ---------------------------------------------------
         
@@ -84,10 +90,10 @@ public class SerialController : MonoBehaviour
         switch (SprossenStatus)
         {
             case > 0:
-                SprossenStatus -= 0.5F;
+                SprossenStatus -= 1;
                 break;
             case < 0:
-                SprossenStatus += 0.5F;
+                SprossenStatus += 1;
                 break;
         }
 

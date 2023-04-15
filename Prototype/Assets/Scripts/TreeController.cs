@@ -25,6 +25,8 @@ public class TreeController : MonoBehaviour
         // Populate variables from the SerialController.
         _soulHealth = SerialController.SoulHealth;
         
+        Debug.Log("TC - _soulHealth = " + _soulHealth);
+        
         // CHANGE COLOUR OF TREE BASED ON CURRENT _soulHealth. 
         var material = _treeRenderer.material;
         switch (_soulHealth)

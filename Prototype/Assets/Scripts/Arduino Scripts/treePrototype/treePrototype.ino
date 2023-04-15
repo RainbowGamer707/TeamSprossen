@@ -25,7 +25,7 @@ void setup()
 void loop()
 {  
   // Check the slide switch to see if the prototype is turned on.
-  if (!CircuitPlayground.slideSwitch()) {return;}
+  // if (!CircuitPlayground.slideSwitch()) {return;}
   
   // Print a heartbeat
   if (millis() > last_time + 2000)

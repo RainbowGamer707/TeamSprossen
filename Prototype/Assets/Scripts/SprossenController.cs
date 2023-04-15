@@ -25,6 +25,8 @@ public class SprossenController : MonoBehaviour
         // Populate variables from the SerialController.
         _sprossenStatus = SerialController.SprossenStatus;
         
+        Debug.Log("SC - _sprossenStatus = " + _sprossenStatus);
+        
         // CHANGE COLOUR OF SPRITE BASED ON SPROSSEN MOVEMENT, 0 = PURPLE/NEUTRAL, 1 = GREEN/POSITIVE, 2 = RED/NEGATIVE
         var material = _sprossenRenderer.material;
         material.color = _sprossenStatus switch

@@ -2,6 +2,9 @@
 #include <Adafruit_CircuitPlayground.h>
 #include <math.h>
 
+// Init timer
+unsigned long last_time = 0;
+
 //INTIALISE VARIABLES AND VALUES
 #define LOW_SHAKE_THRESHOLD  15 // Low acceleration threshold for shake detection, the smaller the value, the more sensitive
 #define HIGH_SHAKE_THRESHOLD 25 //High-range threshold to move from positive to negative reaction
@@ -11,7 +14,7 @@ float X, Y, Z, totalAccel;
 float SPLvalue;
 
 // Init modifier value. Value is communicated through serial connection.
-float interactionValueModifier;
+int interactionValueModifier = 0;
 
 
 void setup() {
@@ -29,7 +32,10 @@ void setup() {
 
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
+  // Reset Modifier
+  // interactionValueModifier = 0;
+
   // COMPUTE TOTAL ACCELERATION
   X = 0;
   Y = 0;
@@ -81,7 +87,17 @@ void loop() {
   // Serial.println(SPLvalue);
 
   // Update Unity by sending modifier total to serial ------------------------------------------------------------------
-  Serial.println(interactionValueModifier);
+
+    // Will send via serial every 1000 milliseconds. Change the value to make more/less frequent.
+  if (millis() > last_time + 1000)
+  {
+    Serial.println(interactionValueModifier);
+    last_time = millis();
+    // Reset Modifier
+    interactionValueModifier = 0;
+  }
+  
+  // Serial.println(interactionValueModifier);
 
   // CHANGE LEDS BASED ON VALUE FROM SERIAL (UNITY) --------------------------------------------------------------------
   
