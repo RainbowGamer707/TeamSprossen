@@ -105,11 +105,11 @@ void loop() {
   if(Serial.available() > 0) { 
     String s1 = Serial.readString(); 
     s1.trim();
-    if (s1 == "0") {
+    if (s1 == "1") {
       for (int i = 0; i < 10; i++) {
         CircuitPlayground.setPixelColor(i, 255, 0, 255); 
       }
-    } else if (s1 == "1") {
+    } else if (s1 == "0") {
       for (int i = 0; i < 10; i++) {
         CircuitPlayground.setPixelColor(i, 0, 255, 0); //SETTING TO GREEN
       }

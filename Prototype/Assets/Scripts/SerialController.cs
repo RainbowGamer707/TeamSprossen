@@ -100,14 +100,16 @@ public class SerialController : MonoBehaviour
         // Update SprossenStatus with current interaction value. THIS WILL REQ TUNING.
         SprossenStatus += inputInt;
         
+        Debug.Log("SerialC - _sprossenStatus = " + SprossenStatus);
+        
         // Write current SoulStatus level to serial for the Sprossen Arduino to set LED's.
         // Sends a number (String) between 0 and 6 depending on current SoulHealth (0 = Best, 2 = Worst)
         switch (SprossenStatus)
         {
-            case <= 0 :
+            case < 0 :
                 _portS.Write("2");
                 break;
-            case > 0 and <= 10:
+            case >= 0 and <= 10:
                 _portS.Write("1");
                 break;
             case > 10:
@@ -115,9 +117,6 @@ public class SerialController : MonoBehaviour
                 break;
         }
 
-        // Report Sprossen Interaction Status to 1st Arduino
-        _portS.Write(SprossenStatus.ToString(CultureInfo.InvariantCulture));
-        
         //---------------------------------------------- TREE LOGIC ----------------------------------------------------
         
         // Update SoulHealth based on input from Arduino. THIS WILL REQ TUNING
