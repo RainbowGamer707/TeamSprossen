@@ -32,9 +32,9 @@ public class SprossenController : MonoBehaviour
         material.color = _sprossenStatus switch
         {
             // Todo- (Make sure this matches code sent to Arduino) CHANGE COLOUR OF SPRITE
-            < 10 and > -10 => Color.blue,
-            > 9 => Color.green,
-            < -9 => Color.red,
+            < 10 and > 0 => Color.blue,
+            >= 0 => Color.green,
+            < 0 => Color.red,
             _ => material.color
         };
     }

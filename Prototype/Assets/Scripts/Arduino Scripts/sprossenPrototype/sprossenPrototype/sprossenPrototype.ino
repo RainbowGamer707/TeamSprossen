@@ -6,8 +6,8 @@
 unsigned long last_time = 0;
 
 //INTIALISE VARIABLES AND VALUES
-#define LOW_SHAKE_THRESHOLD  15 // Low acceleration threshold for shake detection, the smaller the value, the more sensitive
-#define HIGH_SHAKE_THRESHOLD 25 //High-range threshold to move from positive to negative reaction
+#define LOW_SHAKE_THRESHOLD  10 // Low acceleration threshold for shake detection, the smaller the value, the more sensitive
+#define HIGH_SHAKE_THRESHOLD 13 //High-range threshold to move from positive to negative reaction
 float X, Y, Z, totalAccel;
 
 // Init sound pressure level value.
@@ -88,7 +88,7 @@ void loop() {
 
   // Update Unity by sending modifier total to serial ------------------------------------------------------------------
 
-    // Will send via serial every 1000 milliseconds. Change the value to make more/less frequent.
+  // Will send via serial every 1000 milliseconds. Change the value to make more/less frequent.
   if (millis() > last_time + 1000)
   {
     Serial.println(interactionValueModifier);
@@ -97,8 +97,9 @@ void loop() {
     interactionValueModifier = 0;
   }
   
-  // Serial.println(interactionValueModifier);
-
+//  Serial.println(interactionValueModifier);
+//  interactionValueModifier = 0;
+  
   // CHANGE LEDS BASED ON VALUE FROM SERIAL (UNITY) --------------------------------------------------------------------
   
   //CHECK IF WE RECIEVED ANY SERIAL COMMUNICATION FROM UNITY AND UPDATE LED'S

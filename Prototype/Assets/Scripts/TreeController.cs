@@ -29,17 +29,29 @@ public class TreeController : MonoBehaviour
         
         // CHANGE COLOUR OF TREE BASED ON CURRENT _soulHealth. 
         var material = _treeRenderer.material;
+
         switch (_soulHealth)
         {
-            // Todo - (Need to update to match the Arduino) CHANGE COLOUR OF TREE BASED ON THESE VALUES
-            case < 75 and > 25:
+            case <= 100:
+                material.color = Color.red;
+                break;
+            case > 100 and <= 300:
+                material.color = Color.magenta;
+                break;
+            case > 300 and < 500:
+                material.color = Color.yellow;
+                break;
+            case >= 500 and <= 650:
                 material.color = Color.blue;
                 break;
-            case > 74:
+            case > 650 and <= 850:
+                material.color = Color.cyan;
+                break;
+            case > 850 and <= 999:
                 material.color = Color.green;
                 break;
-            case < 26:
-                material.color = Color.red;
+            case >= 1000:
+                material.color = Color.white;
                 break;
         }
     }

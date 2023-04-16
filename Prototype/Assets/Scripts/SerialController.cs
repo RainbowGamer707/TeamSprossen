@@ -56,7 +56,7 @@ public class SerialController : MonoBehaviour
         _portT.Open();
 
         //todo - Set initial health of persistant interaction (Tree). NEEDS LOGIC
-        SoulHealth = 50;
+        SoulHealth = 500;
         
         // Set initial value for status of Sprossen. 
         SprossenStatus = 0.0F;
@@ -75,7 +75,6 @@ public class SerialController : MonoBehaviour
             return;
         }
            
-        
         // CHECK IF UNITY HAS RECEIVED ANY COMMUNICATION FROM ARDUINO
         if (_portS.BytesToRead <= 0) return; 
         
@@ -89,12 +88,22 @@ public class SerialController : MonoBehaviour
         // Decay the _sprossenStatus back toward 0 (Neutral)
         switch (SprossenStatus)
         {
-            case > 0:
-                SprossenStatus -= 1;
+            case > 1:
+                SprossenStatus -= 2;
                 break;
             case < 0:
-                SprossenStatus += 1;
+                SprossenStatus += 2;
                 break;
+        }
+
+        if (SprossenStatus >= 17)
+        {
+            SprossenStatus = 16;
+        }
+
+        if (SprossenStatus <= -17)
+        {
+            SprossenStatus = -16;
         }
 
         // Update SprossenStatus with current interaction value. THIS WILL REQ TUNING.
@@ -126,29 +135,26 @@ public class SerialController : MonoBehaviour
         // Sends a number (String) between 0 and 6 depending on current SoulHealth (0 = Worst, 6 = Best)
         switch (SoulHealth)
         {
-            case > 0 and < 10:
+            case <= 100:
                 _portT.Write("0");
                 break;
-            case > 9 and < 25:
+            case > 100 and <= 300:
                 _portT.Write("1");
                 break;
-            case > 24 and < 40:
+            case > 300 and < 500:
                 _portT.Write("2");
                 break;
-            case > 39 and < 55:
+            case >= 500 and <= 650:
                 _portT.Write("3");
                 break;
-            case > 54 and < 70:
+            case > 650 and <= 850:
                 _portT.Write("4");
                 break;
-            case > 69 and < 85:
+            case > 850 and <= 999:
                 _portT.Write("5");
                 break;
-            case > 84 and < 100:
+            case >= 1000:
                 _portT.Write("6");
-                break;
-            case > 99:
-                _portT.Write("7");
                 break;
         }
 

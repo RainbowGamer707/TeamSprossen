@@ -28,15 +28,15 @@ void loop()
   // if (!CircuitPlayground.slideSwitch()) {return;}
   
   // Print a heartbeat
-  if (millis() > last_time + 2000)
-  {
-    Serial.println("Arduino functional");
-    last_time = millis();
-  }
+  //if (millis() > last_time + 2000)
+  //{
+  //  Serial.println("Arduino functional");
+  //  last_time = millis();
+  //}
   
 //Set LED's on Arduino based off soulHealth (s1) value (Received in serial from Unity) ---------------------------------
 
-  if(Serial.available() > 0) { 
+//  if(Serial.available() > 0) { 
     String s1 = Serial.readString(); 
     s1.trim();
     
@@ -91,7 +91,7 @@ void loop()
         CircuitPlayground.setPixelColor(9, 0x0000FF);
       }
     }
-  }
+//  }
   
 //----------------------------------------------------------------------------------------------------------------------
 
