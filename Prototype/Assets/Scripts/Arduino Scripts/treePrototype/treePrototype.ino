@@ -16,9 +16,13 @@ void setup()
   
   // Initialize Serial Connection
   Serial.begin(9600);
+  Serial.setTimeout(10);
 
   // Set initial LED state
   CircuitPlayground.setPixelColor(2,   0, 255,   0);
+
+   //SET BRIGHTNESS OF LED PIXELS
+  CircuitPlayground.setBrightness(255);
 }
 
 

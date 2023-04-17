@@ -31,10 +31,10 @@ public class SerialController : MonoBehaviour
 
         // SET PORT NAMES
         // COPY AND PASTE TO SET FOR YOUR OWN COMPUTER, COMMENT OUT OTHERS
-        // portName_S = "/dev/cu.usbmodem1413401";
-        // portName_T = "/dev/cu.usbmodem1413301";
-        portNameS = "COM5";
-        portNameT = "COM6";
+        portNameS = "/dev/cu.usbmodem1423401";
+        portNameT = "/dev/cu.usbmodemHIDPC1";
+        //portNameS = "COM5";
+        //portNameT = "COM6";
 
         // SETUP PORTS
         _portS = new SerialPort(portNameS, 9600);
