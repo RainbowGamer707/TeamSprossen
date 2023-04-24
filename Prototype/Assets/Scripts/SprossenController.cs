@@ -37,25 +37,17 @@ public class SprossenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Populate variables from the SerialController.
-        _sprossenStatus = SerialController.SprossenStatus;
+        // Capture last value of Sprossen for comparison
         _lastSprossenStatus = _sprossenStatus switch
-        {
-            < 10 and >= 0 => 0,
-            >= 10 => 1,
-            _ => -1
-        };
-        
-        // Set variable to -1, 0, or 1 depending on interaction (-1 = bad, 0 = neutral, 1 = positive.)
-        // This will be compared against the updated _sprossenStatus variable to see if there has been a state
-        // change for audio.
-        _lastSprossenStatus = _lastSprossenStatus switch
-        {
-            < 10 and >= 0 => 0,
-            >= 10 => 1,
-            _ => -1
-        };
-        
+             {
+                 < 10 and >= 0 => 0,
+                 >= 10 => 1,
+                 _ => -1
+             };
+        // Re-Populate variables from the SerialController.
+        _sprossenStatus = SerialController.SprossenStatus;
+
+
         //Debug.Log("SC - _lastSprossenStatus = " + _lastSprossenStatus);
         //Debug.Log("SC - _sprossenStatus = " + _sprossenStatus);
         
@@ -84,36 +76,23 @@ public class SprossenController : MonoBehaviour
         
         // Only play sound if the value (Happy/Neutral/Sad) has changed (Not working yet).
 
-        //if ((int)_sprossenCheck != (int)_lastSprossenStatus)
-        //{
+        if ((int)_sprossenCheck != (int)_lastSprossenStatus)
+        {
             if ((int)_sprossenCheck == 0)
             {
-                if (_sprossenAudio.isPlaying)
-                {
-                    return;
-                }
-
                 _sprossenAudio.PlayOneShot(sprossenNeutral, 0.5f);
             }
             
             if ((int)_sprossenCheck == 1)
             {
-                if (_sprossenAudio.isPlaying)
-                {
-                    return;
-                }
                 _sprossenAudio.PlayOneShot(sprossenHappy, 0.5f);
             }
     
             if ((int)_sprossenCheck == -1)
             {
-                if (_sprossenAudio.isPlaying)
-                {
-                    return;
-                }
                 _sprossenAudio.PlayOneShot(sprossenAngry, 0.5f);
             }
-        //}
+        }
         
 
     }
