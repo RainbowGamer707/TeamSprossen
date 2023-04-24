@@ -71,14 +71,14 @@ void loop() {
 
   // Updates modifier based on sound volume level
   // Quiet/Soothing volume adds 1 to Modifier
-  if (SPLvalue > 65.0 && SPLvalue <80.0) {
+  if (SPLvalue > 50.0 && SPLvalue < 60.0) {
     interactionValueModifier += 1;
   }
 
   // There is a small buffer between adding and losing modifier value.
 
   // Loud volume subtracts 1 from the modifier
-  if (SPLvalue > 90.0) {
+  if (SPLvalue > 65.0) {
     interactionValueModifier += -1;
   }
 
