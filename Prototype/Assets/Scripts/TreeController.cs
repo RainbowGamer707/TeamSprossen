@@ -111,7 +111,7 @@ public class TreeController : MonoBehaviour
         //     _treeNeutralAudio.Stop();
         //     _treeHappyAudio.Play();
         // }
-        
+
         if (_soulHealth < 500)
         {
             Debug.Log("HERE 1");
@@ -121,16 +121,7 @@ public class TreeController : MonoBehaviour
             _treeAudio.clip = treeSad;
             _treeAudio.Play();
         } 
-        else if (_soulHealth is >= 500 and < 650)
-        {
-            Debug.Log("HERE 2");
-            if (_treeAudio.isPlaying.Equals(treeNeutral)) return;
-            Debug.Log("HERE 2.2");
-            _treeAudio.Stop();
-            _treeAudio.clip = treeNeutral;
-            _treeAudio.Play();
-        }
-        else
+        else if (_soulHealth >= 700)
         {
             Debug.Log("HERE 3");
             if (_treeAudio.isPlaying.Equals(treeHappy)) return;
@@ -139,7 +130,14 @@ public class TreeController : MonoBehaviour
             _treeAudio.clip = treeHappy;
             _treeAudio.Play();
         }
-
-
+        else
+        {
+            Debug.Log("HERE 2");
+            if (_treeAudio.isPlaying.Equals(treeNeutral)) return;
+            Debug.Log("HERE 2.2");
+            _treeAudio.Stop();
+            _treeAudio.clip = treeNeutral;
+            _treeAudio.Play();
+        }
     }
 }

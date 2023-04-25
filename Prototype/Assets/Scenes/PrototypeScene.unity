@@ -460,9 +460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0591d682d32584e84d06560e0cab03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprossenHappy: {fileID: 8300000, guid: 013564cad42e73a4382e5a6fd3a81d73, type: 3}
-  sprossenNeutral: {fileID: 8300000, guid: cf8cd675ff80e234c96b56434c5e7b50, type: 3}
-  sprossenAngry: {fileID: 8300000, guid: 29ffe8c4e46326c43997be65835c0b34, type: 3}
+  sprossenHappy: {fileID: 8300000, guid: 0757ec7c801530140b659b63337cd73a, type: 3}
+  sprossenNeutral: {fileID: 8300000, guid: 99ddb8cd8262f9d4dbcc8744cb74c2e8, type: 3}
+  sprossenAngry: {fileID: 8300000, guid: 3acafe0cc5ef46b4baece91f8f9a0cc5, type: 3}
 --- !u!82 &321509343
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1823,9 +1823,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0422e898cfbc6e847bb47ea2d1fca528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeHappy: {fileID: 8300000, guid: 12ce7e092959a7248988ca7957a1a000, type: 3}
-  treeNeutral: {fileID: 8300000, guid: 9edebdb2b7f19544cae434747fe7338a, type: 3}
-  treeSad: {fileID: 8300000, guid: 372e618d2b24dfb449e01a9f0cb901f4, type: 3}
+  treeHappy: {fileID: 8300000, guid: 21cdd97a7f778674ba02bd2c955b2063, type: 3}
+  treeNeutral: {fileID: 8300000, guid: bbfa14eaf8c45f54c9d351b282d4904f, type: 3}
+  treeSad: {fileID: 8300000, guid: 78a2f96a2f0fa9646b529b9cde8d239d, type: 3}
 --- !u!82 &2017577901
 AudioSource:
   m_ObjectHideFlags: 0
