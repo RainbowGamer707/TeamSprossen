@@ -1,3 +1,5 @@
+#include <BobaBlox.h>
+
 //ARDUINO CODE FOR SPROSSEN LILYPAD
 #include <Adafruit_CircuitPlayground.h>
 #include <math.h>
@@ -16,6 +18,7 @@ float SPLvalue;
 // Init modifier value. Value is communicated through serial connection.
 int interactionValueModifier = 0;
 
+Speaker piezo(2);       // Speaker uses digital pin #2
 
 void setup() {
   // put your setup code here, to run once:
@@ -122,4 +125,12 @@ void loop() {
   }
    
 //----------------------------------------------------------------------------------------------------------------------
+
+  //Speaker Test
+  // Sweep frequency from 50 to 6000 in steps of 50Hz
+//  int freq;
+//  for (freq=50; freq<=6000; freq=freq+50) {
+//    piezo.beep(freq, 200);
+//    delay (50);
+//  }
 }

@@ -30,7 +30,7 @@ public class RoomController : MonoBehaviour
         material.color = _roomStatus switch
         {
             // CHANGE COLOUR OF SURFACE BASED ON THESE VALUES
-            < 5 and > -5=> Color.blue,
+            < 5 and > -5 => Color.blue,
             > 4 => Color.green,
             < -4 => Color.red,
             _ => material.color

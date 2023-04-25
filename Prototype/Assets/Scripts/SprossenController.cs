@@ -72,7 +72,7 @@ public class SprossenController : MonoBehaviour
             _ => -1
         };
         
-        Debug.Log("SC - _sprossenCheck = " + _sprossenCheck + " | _lastSprossenStatus = " + _lastSprossenStatus);
+        //Debug.Log("SC - _sprossenCheck = " + _sprossenCheck + " | _lastSprossenStatus = " + _lastSprossenStatus);
         
         // Only play sound if the value (Happy/Neutral/Sad) has changed (Not working yet).
 

@@ -15,8 +15,11 @@ public class TreeController : MonoBehaviour
     public AudioClip treeNeutral;
     public AudioClip treeSad;
     private AudioSource _treeAudio;
+    // private AudioSource _treeHappyAudio;
+    // private AudioSource _treeNeutralAudio;
+    // private AudioSource _treeSadAudio;
 
-    
+
     // Start is called before the first frame update
     void Start()
     { 
@@ -29,6 +32,12 @@ public class TreeController : MonoBehaviour
         
         // Get component for AudioSource
         _treeAudio = GetComponent<AudioSource>();
+        // _treeHappyAudio = GetComponent<AudioSource>();
+        // _treeHappyAudio.clip = treeHappy;
+        // _treeNeutralAudio = GetComponent<AudioSource>();
+        // _treeNeutralAudio.clip = treeNeutral;
+        // _treeSadAudio = GetComponent<AudioSource>();
+        // _treeSadAudio.clip = treeSad;
     }
 
     
@@ -38,7 +47,7 @@ public class TreeController : MonoBehaviour
         // Populate variables from the SerialController.
         _soulHealth = SerialController.SoulHealth;
         
-        //Debug.Log("TC - _soulHealth = " + _soulHealth);
+
         
         // CHANGE COLOUR OF TREE BASED ON CURRENT _soulHealth. 
         var material = _treeRenderer.material;
@@ -67,5 +76,70 @@ public class TreeController : MonoBehaviour
                 material.color = Color.white;
                 break;
         }
+        
+        //Debug.Log("TC - _soulHealth = " + _soulHealth);
+        
+        // Set sound for tree
+        // if (_soulHealth < 500)
+        // {
+        //     Debug.Log("HERE 1");
+        //     if (_treeSadAudio.isPlaying) return;
+        //     _treeNeutralAudio.Stop();
+        //     _treeSadAudio.Play();
+        // } 
+        // else if (_soulHealth is >= 500 and < 650)
+        // {
+        //     Debug.Log("HERE 2");
+        //     if (_treeNeutralAudio.isPlaying) return;
+        //     Debug.Log("HERE 2.2");
+        //     if (_treeSadAudio.isPlaying)
+        //     {
+        //         Debug.Log("HERE 2.3");
+        //         _treeSadAudio.Stop();
+        //     }
+        //     if (_treeHappyAudio.isPlaying)
+        //     {
+        //         _treeHappyAudio.Stop();
+        //     }
+        //     Debug.Log("HERE 2.4");
+        //     _treeNeutralAudio.Play();
+        // }
+        // else
+        // {
+        //     Debug.Log("HERE 3");
+        //     if (_treeHappyAudio.isPlaying) return;
+        //     _treeNeutralAudio.Stop();
+        //     _treeHappyAudio.Play();
+        // }
+        
+        if (_soulHealth < 500)
+        {
+            Debug.Log("HERE 1");
+            if (_treeAudio.isPlaying.Equals(treeSad)) return;
+            Debug.Log("HERE 1.2");
+            _treeAudio.Stop();
+            _treeAudio.clip = treeSad;
+            _treeAudio.Play();
+        } 
+        else if (_soulHealth is >= 500 and < 650)
+        {
+            Debug.Log("HERE 2");
+            if (_treeAudio.isPlaying.Equals(treeNeutral)) return;
+            Debug.Log("HERE 2.2");
+            _treeAudio.Stop();
+            _treeAudio.clip = treeNeutral;
+            _treeAudio.Play();
+        }
+        else
+        {
+            Debug.Log("HERE 3");
+            if (_treeAudio.isPlaying.Equals(treeHappy)) return;
+            Debug.Log("HERE 3.2");
+            _treeAudio.Stop();
+            _treeAudio.clip = treeHappy;
+            _treeAudio.Play();
+        }
+
+
     }
 }

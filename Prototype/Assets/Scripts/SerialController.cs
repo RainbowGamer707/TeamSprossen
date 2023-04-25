@@ -55,7 +55,7 @@ public class SerialController : MonoBehaviour
         _portS.Open();
         _portT.Open();
 
-        //todo - Set initial health of persistant interaction (Tree). NEEDS LOGIC
+        // Set initial health of persistant interaction (Tree).
         SoulHealth = 500;
         
         // Set initial value for status of Sprossen. 
