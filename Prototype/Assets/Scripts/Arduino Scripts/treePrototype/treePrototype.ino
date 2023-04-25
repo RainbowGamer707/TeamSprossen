@@ -1,3 +1,4 @@
+#include <BobaBlox.h>
 #include <Adafruit_CircuitPlayground.h>
 #include <Keyboard.h>
 #include <math.h>
@@ -21,8 +22,8 @@ void setup()
   // Set initial LED state
   CircuitPlayground.setPixelColor(2,   0, 255,   0);
 
-   //SET BRIGHTNESS OF LED PIXELS
-  CircuitPlayground.setBrightness(255);
+   //SET BRIGHTNESS OF LED PIXELS ((0-255)
+  CircuitPlayground.setBrightness(150);
 }
 
 

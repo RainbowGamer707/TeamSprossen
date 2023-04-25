@@ -152,7 +152,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.75
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1189,6 +1189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c470c51397c21274c8cedcacee99be24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redWall: {fileID: 2100000, guid: 57b9c87323940514e836da5013295acc, type: 2}
+  blueWall: {fileID: 2100000, guid: 2d30d2a19b02b7c4e81a032af43eb5cd, type: 2}
+  greenWall: {fileID: 2100000, guid: 462031b112300da4d842db1a2337c660, type: 2}
 --- !u!1 &1631034850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1531,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c470c51397c21274c8cedcacee99be24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redWall: {fileID: 2100000, guid: 57b9c87323940514e836da5013295acc, type: 2}
+  blueWall: {fileID: 2100000, guid: 2d30d2a19b02b7c4e81a032af43eb5cd, type: 2}
+  greenWall: {fileID: 2100000, guid: 462031b112300da4d842db1a2337c660, type: 2}
 --- !u!1 &1777292552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,9 +1642,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1777292552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c470c51397c21274c8cedcacee99be24, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d66c1b8a4d704242b6581e93ecd4cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dryGround: {fileID: 2100000, guid: 37754903e3e90bd4e9d02ff25f40eb10, type: 2}
+  yellowGrass: {fileID: 2100000, guid: 064ff038d6d394b4896308d2baadb2db, type: 2}
+  lushGrass: {fileID: 2100000, guid: 32065788f9583934aa8df6f8bba52452, type: 2}
 --- !u!1001 &1832444693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1720,6 +1729,7 @@ GameObject:
   - component: {fileID: 1900584921}
   - component: {fileID: 1900584920}
   - component: {fileID: 1900584919}
+  - component: {fileID: 1900584923}
   m_Layer: 0
   m_Name: backWallPlane
   m_TagString: Untagged
@@ -1806,6 +1816,21 @@ Transform:
   m_Father: {fileID: 858902929}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1900584923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900584918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c470c51397c21274c8cedcacee99be24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redWall: {fileID: 2100000, guid: 57b9c87323940514e836da5013295acc, type: 2}
+  blueWall: {fileID: 2100000, guid: 2d30d2a19b02b7c4e81a032af43eb5cd, type: 2}
+  greenWall: {fileID: 2100000, guid: 462031b112300da4d842db1a2337c660, type: 2}
 --- !u!4 &2017577895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9e93f4be4e886a84fa00ee3c414da1e9, type: 3}
@@ -1826,6 +1851,13 @@ MonoBehaviour:
   treeHappy: {fileID: 8300000, guid: 21cdd97a7f778674ba02bd2c955b2063, type: 3}
   treeNeutral: {fileID: 8300000, guid: bbfa14eaf8c45f54c9d351b282d4904f, type: 3}
   treeSad: {fileID: 8300000, guid: 78a2f96a2f0fa9646b529b9cde8d239d, type: 3}
+  rainbowLeaves: {fileID: 2100000, guid: ebf7579df3c2446439d44805ea322994, type: 2}
+  greenLeaves: {fileID: 2100000, guid: d24bcb19461c1614c97cbdbf761cf7d4, type: 2}
+  aquaLeaves: {fileID: 2100000, guid: e075979ba6c3eaf4d86e856f55ccf6dd, type: 2}
+  blueLeaves: {fileID: 2100000, guid: 6d5f0c0d71e93c44aa03b35820660f4f, type: 2}
+  yellowLeaves: {fileID: 2100000, guid: 9c563705da38ebe4f908274d323a6877, type: 2}
+  orangeLeaves: {fileID: 2100000, guid: bfe4056b8b5a376468d74c0a36a9fdde, type: 2}
+  redLeaves: {fileID: 2100000, guid: d0f314c3aee92f14e812d8476e10022b, type: 2}
 --- !u!82 &2017577901
 AudioSource:
   m_ObjectHideFlags: 0

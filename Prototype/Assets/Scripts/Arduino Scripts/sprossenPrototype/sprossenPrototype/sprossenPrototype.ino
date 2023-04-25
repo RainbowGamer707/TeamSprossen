@@ -29,8 +29,8 @@ void setup() {
   Serial.begin(9600);
   Serial.setTimeout(10);
 
-  //SET BRIGHTNESS OF LED PIXELS
-  CircuitPlayground.setBrightness(255);
+  //SET BRIGHTNESS OF LED PIXELS (0-255)
+  CircuitPlayground.setBrightness(150);
 }
 
 
