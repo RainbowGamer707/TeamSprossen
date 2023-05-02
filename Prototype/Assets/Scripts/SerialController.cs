@@ -31,10 +31,10 @@ public class SerialController : MonoBehaviour
 
         // SET PORT NAMES
         // COPY AND PASTE TO SET FOR YOUR OWN COMPUTER, COMMENT OUT OTHERS
-        portNameS = "/dev/cu.usbmodem1423401";
-        portNameT = "/dev/cu.usbmodemHIDPC1";
-        //portNameS = "COM5";
-        //portNameT = "COM6";
+        //portNameS = "/dev/cu.usbmodem1423401";
+        //portNameT = "/dev/cu.usbmodemHIDPC1";
+        portNameS = "COM5";
+        portNameT = "COM6";
 
         // SETUP PORTS
         _portS = new SerialPort(portNameS, 9600);
@@ -55,7 +55,7 @@ public class SerialController : MonoBehaviour
         _portS.Open();
         _portT.Open();
 
-        //todo - Set initial health of persistant interaction (Tree). NEEDS LOGIC
+        // Set initial health of persistant interaction (Tree).
         SoulHealth = 500;
         
         // Set initial value for status of Sprossen. 
@@ -81,7 +81,7 @@ public class SerialController : MonoBehaviour
         // Collect and parse data from serial connection.
         var inputStr = _portS.ReadLine().Trim();
         var inputInt = int.Parse(inputStr);
-        Debug.Log("SC - inputInt = " + inputInt);
+        //Debug.Log("SC - inputInt = " + inputInt);
 
         //------------------------------------------- SPROSSEN LOGIC ---------------------------------------------------
         
@@ -101,15 +101,15 @@ public class SerialController : MonoBehaviour
             SprossenStatus = 16;
         }
 
-        if (SprossenStatus <= -17)
+        if (SprossenStatus <= -7)
         {
-            SprossenStatus = -16;
+            SprossenStatus = -6;
         }
 
         // Update SprossenStatus with current interaction value. THIS WILL REQ TUNING.
         SprossenStatus += inputInt;
         
-        Debug.Log("SerialC - _sprossenStatus = " + SprossenStatus);
+        //Debug.Log("SerialC - _sprossenStatus = " + SprossenStatus);
         
         // Write current SoulStatus level to serial for the Sprossen Arduino to set LED's.
         // Sends a number (String) between 0 and 6 depending on current SoulHealth (0 = Best, 2 = Worst)
