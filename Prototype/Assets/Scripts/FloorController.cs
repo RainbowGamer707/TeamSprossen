@@ -32,7 +32,7 @@ public class FloorController : MonoBehaviour
         // CHANGE COLOUR OF SURFACE BASED ON CURRENT INTERACTION LEVEL. (Rough/Gentle etc)
         _surfaceRenderer.material = _soulHealth switch
         {
-            > 700 => lushGrass,
+            > 650 => lushGrass,
             < 500 => dryGround,
             _ => yellowGrass
         };

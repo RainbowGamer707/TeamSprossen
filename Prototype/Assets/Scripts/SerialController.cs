@@ -33,8 +33,14 @@ public class SerialController : MonoBehaviour
         // COPY AND PASTE TO SET FOR YOUR OWN COMPUTER, COMMENT OUT OTHERS
         //portNameS = "/dev/cu.usbmodem1423401";
         //portNameT = "/dev/cu.usbmodemHIDPC1";
+        
+        // Rob Desktop
         portNameS = "COM5";
         portNameT = "COM6";
+        
+        // Rob Laptop
+        //portNameS = "COM7";
+        //portNameT = "COM5";
 
         // SETUP PORTS
         _portS = new SerialPort(portNameS, 9600);

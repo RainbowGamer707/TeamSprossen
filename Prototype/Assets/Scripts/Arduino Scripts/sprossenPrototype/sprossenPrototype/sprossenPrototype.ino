@@ -1,5 +1,3 @@
-#include <BobaBlox.h>
-
 //ARDUINO CODE FOR SPROSSEN LILYPAD
 #include <Adafruit_CircuitPlayground.h>
 #include <math.h>
@@ -18,7 +16,12 @@ float SPLvalue;
 // Init modifier value. Value is communicated through serial connection.
 int interactionValueModifier = 0;
 
-Speaker piezo(2);       // Speaker uses digital pin #2
+// Pressure sensor on A11 (#12) with ground and +3.3V
+float pressureSensor = A11;
+
+// Pressure value variable.
+float currentPressure = 0.0f;
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -55,7 +58,7 @@ void loop() {
 
   totalAccel = sqrt(X*X + Y*Y + Z*Z);
   
-  // UPDATE MODIFIER VALUE BASED ON AGGRESIVENESS ----------------------------------------------------------------------
+// UPDATE MODIFIER VALUE BASED ON AGGRESIVENESS ----------------------------------------------------------------------
   
   // +1 for Positive Reaction, Green colour
   if (totalAccel > LOW_SHAKE_THRESHOLD && totalAccel < HIGH_SHAKE_THRESHOLD) {
@@ -67,14 +70,14 @@ void loop() {
     interactionValueModifier += -1;; 
   }
 
-  // Use microphone to detect sound. modifier will be affected by value. -----------------------------------------------
+// Use microphone to detect sound. modifier will be affected by value. -----------------------------------------------
   
   // Calculate Sound Pressure Level. (In 10Ms batches)
   SPLvalue = CircuitPlayground.mic.soundPressureLevel(10);
 
   // Updates modifier based on sound volume level
   // Quiet/Soothing volume adds 1 to Modifier
-  if (SPLvalue > 50.0 && SPLvalue < 60.0) {
+  if (SPLvalue > 52.0 && SPLvalue < 60.0) {
     interactionValueModifier += 1;
   }
 
@@ -86,10 +89,32 @@ void loop() {
   }
 
   // Uncomment to see SPLvalue in Serial Monitor (For calibrating sound levels).
-  // Serial.print("Sound Sensor SPL: ");
-  // Serial.println(SPLvalue);
+  //Serial.print("Sound Sensor SPL: ");
+  //Serial.println(SPLvalue);
 
-  // Update Unity by sending modifier total to serial ------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+// PRESSURE SENSOR
+
+delay(100);
+
+  // Assign the input from the pressure sensor to its variable.
+  currentPressure = analogRead(A11);
+
+  // Send pressure data to serial
+  //Serial.print("Pressure Sensor: ");
+  //Serial.println(currentPressure);
+
+  // Process the raw pressure measurement into the right format for the speed modification tool.
+  if (currentPressure > 390.0 && currentPressure < 700.0) {
+      interactionValueModifier += 1;
+      Serial.println("+1");
+  }
+  if (currentPressure > 899) {
+      interactionValueModifier += -1;
+      Serial.println("-1");
+  }
+
+// Update Unity by sending modifier total to serial ------------------------------------------------------------------
 
   // Will send via serial every 1000 milliseconds. Change the value to make more/less frequent.
   if (millis() > last_time + 1000)
@@ -103,7 +128,7 @@ void loop() {
 //  Serial.println(interactionValueModifier);
 //  interactionValueModifier = 0;
   
-  // CHANGE LEDS BASED ON VALUE FROM SERIAL (UNITY) --------------------------------------------------------------------
+// CHANGE LEDS BASED ON VALUE FROM SERIAL (UNITY) --------------------------------------------------------------------
   
   //CHECK IF WE RECIEVED ANY SERIAL COMMUNICATION FROM UNITY AND UPDATE LED'S
   if(Serial.available() > 0) { 
@@ -133,4 +158,5 @@ void loop() {
 //    piezo.beep(freq, 200);
 //    delay (50);
 //  }
+
 }
